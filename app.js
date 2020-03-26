@@ -34,6 +34,7 @@ app.use(require("express-session")({
     resave: false,
     saveUninitialized: false
 }));
+app.locals.moment = require('moment');
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
@@ -53,4 +54,8 @@ app.use("/campgrounds/:id/comments", commentRoutes);
 app.listen(process.env.PORT, process.env.IP, function(){
    console.log("The YelpCamp Server Has Started!");
 });
+
+// app.listen(3000, function() { 
+//   console.log('yelpcamp dtabase has started'); 
+// });
 
